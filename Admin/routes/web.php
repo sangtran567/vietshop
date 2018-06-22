@@ -18,11 +18,5 @@ Route::get('/', function () {
 Route::get('category', function(){
    return view('admin.category.index');
 });
-Route::get('category/add',function(){
-    if(DB::connection()->getDatabaseName())
-    {
-        echo "connected successfully to database ".DB::connection()->getDatabaseName();
-    }
-
-   return view('admin.category.add');
-})->name('addCategory');
+Route::get('category/add','CategoryController@addGet')->name('addCategory');
+Route::post('category/add','CategoryController@addPost');
